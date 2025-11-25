@@ -1,0 +1,33 @@
+{
+  "name": "aulapdi04",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luizote1/AulaPDI04.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "express",
+    "htpp",
+    "post",
+    "cookies"
+  ],
+  "author": "Luiz Gustavo Sá",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Luizote1/AulaPDI04/issues"
+  },
+  "homepage": "https://github.com/Luizote1/AulaPDI03#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "body-parser": "^2.2.1",
+    "express-session": "^1.18.2",
+    "multer": "^2.0.2"
+  }
+}
