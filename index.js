@@ -23,8 +23,28 @@ app.use((req, res, next) => {
   next();
 });
 
-const FILE = "data.json";
-let fornecedores = [];
+app.post("/fornecedor/cadastrar", requireLogin, (req, res) => {
+  const campos = ["cnpj","razao","nomeFantasia","endereco","cidade","uf","cep","email","telefone"];
+  const erros = [];
+
+  campos.forEach((c) => {
+    if (!req.body[c] || req.body[c].trim() === "") erros.push(c);
+  });
+
+  if (erros.length > 0) {
+    const lista = erros.map(e => `<li>${e}</li>`).join("");
+    return res.send(layout(req, "Erro no cadastro", `
+      <div class="alert alert-danger">Preencha os campos obrigatórios:<ul>${lista}</ul></div>
+      <a href="/fornecedor" class="btn btn-secondary">Voltar</a>
+    `));
+  }
+
+  fornecedores.push(req.body); // só fica na memória
+  res.send(layout(req, "Sucesso", `
+    <div class="alert alert-success">Fornecedor cadastrado com sucesso!</div>
+    <a href="/fornecedor" class="btn btn-primary">Voltar</a>
+  `));
+});
 
 if (fs.existsSync(FILE)) {
   try {
